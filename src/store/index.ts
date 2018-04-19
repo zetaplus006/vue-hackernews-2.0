@@ -1,8 +1,9 @@
-import { Container, bind } from "vue-class-state";
-import { STORE, Store } from "./Store";
-import { USERINFO, UserInfo, IUserInfo } from './UserInfo';
+import { bind, Container, State } from 'vue-class-state';
 import { IMessage, MESSAGE, Message } from './Message';
+import { STORE, Store } from './Store';
+import { IUserInfo, USERINFO, UserInfo } from './UserInfo';
 
+State.showInject();
 
 @Container({
   providers: [

@@ -1,23 +1,21 @@
 
-
-
-import { State, Inject, Mutation } from 'vue-class-state'
+import { Inject, Mutation, State } from 'vue-class-state';
 export const MESSAGE = 'message';
 
-export const IMessage = Inject(MESSAGE)
+export const IMessage = Inject(MESSAGE);
 
-export type IMessage = Message
+export type IMessage = Message;
 
 export class Message {
-    @State list = []
+    @State list = [];
 
     addAction() {
         return new Promise(r => {
             setTimeout(() => {
-                this.add()
-                r({})
+                this.add();
+                r({});
             }, 30);
-        })
+        });
     }
 
     @Mutation
@@ -28,6 +26,6 @@ export class Message {
             text: 'hello'
         }, {
             text: 'hello'
-        }]
+        }];
     }
 }
