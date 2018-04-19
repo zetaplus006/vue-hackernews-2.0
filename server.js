@@ -87,7 +87,7 @@ function render (req, res) {
   const handleError = err => {
     if (err.url) {
       res.redirect(err.url)
-    } else if(err.code === 404) {
+    } else if (err.code === 404) {
       res.status(404).send('404 | Page Not Found')
     } else {
       // Render Error Page or Redirect
@@ -116,7 +116,7 @@ app.get('*', isProd ? render : (req, res) => {
   readyPromise.then(() => render(req, res))
 })
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 3001
 app.listen(port, () => {
   console.log(`server started at localhost:${port}`)
 })

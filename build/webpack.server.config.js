@@ -3,18 +3,19 @@ const merge = require('webpack-merge')
 const base = require('./webpack.base.config')
 const nodeExternals = require('webpack-node-externals')
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
+const path = require('path')
 
 module.exports = merge(base, {
   target: 'node',
   devtool: '#source-map',
-  entry: './src/entry-server.js',
+  entry: './src/entry-server.ts',
   output: {
     filename: 'server-bundle.js',
     libraryTarget: 'commonjs2'
   },
   resolve: {
     alias: {
-      'create-api': './create-api-server.js'
+      'httpApi': './api.server.ts'
     }
   },
   // https://webpack.js.org/configuration/externals/#externals
@@ -31,3 +32,5 @@ module.exports = merge(base, {
     new VueSSRServerPlugin()
   ]
 })
+
+console.log(path.resolve(__dirname, '../src/api/api.server.ts'))
