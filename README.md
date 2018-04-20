@@ -1,4 +1,4 @@
-# vue-ts-hackernews-2.0
+# vue-ts-ssr
 
 Vue+TypeScript+服务端渲染，改自[vue-hackernews-2.0](https://github.com/vuejs/vue-hackernews-2.0)
 
