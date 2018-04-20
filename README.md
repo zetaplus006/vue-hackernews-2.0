@@ -1,4 +1,4 @@
-# vue-ts-hackernews-2.0
+﻿# vue-ts-hackernews-2.0
 
 Vue+TypeScript服务端渲染模板，改自Vue官方模板[vue-hackernews-2.0](https://github.com/vuejs/vue-hackernews-2.0)
 
