@@ -8,7 +8,9 @@
     ]
   ],
   "plugins": [
+    "transform-runtime",
     "syntax-dynamic-import",
+    "jsx-v-model",
     "jsx-vue-functional",
     "transform-vue-jsx"
   ]

@@ -18,7 +18,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'public': path.resolve(__dirname, '../public')
+      'public': path.resolve(__dirname, '../public'),
+      '@': path.resolve(__dirname, '../src')
     },
     extensions: ['.ts', '.tsx', '.js']
   },
@@ -38,6 +39,14 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
+      },
+      {
+        test: /\.ts$/,
+        enforce: 'pre',
+        loader: 'tslint-loader',
+        options: {
+          failOnHint: true
+        }
       },
       // webpack 4.x 与 ts-loader4.x 有问题，ts-loder回退3.5
       {
@@ -137,8 +146,8 @@ module.exports = {
       new webpack.WatchIgnorePlugin([
         /less\.d\.ts$/
       ]),
-      // new WatchTimestampsPlugin([
-      //   /less\.d\.ts$/,
-      // ])
+      new WatchTimestampsPlugin([
+        /less\.d\.ts$/,
+      ])
     ]
 }

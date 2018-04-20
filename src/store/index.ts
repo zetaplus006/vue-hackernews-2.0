@@ -1,4 +1,5 @@
 import { bind, Container, State } from 'vue-class-state';
+import { Api, API, IApi } from '../api/index';
 import { IMessage, MESSAGE, Message } from './Message';
 import { STORE, Store } from './Store';
 import { IUserInfo, USERINFO, UserInfo } from './UserInfo';
@@ -9,8 +10,9 @@ State.showInject();
   providers: [
     bind<Store>(STORE).toClass(Store),
     bind<IUserInfo>(USERINFO).toClass(UserInfo),
-    bind<IMessage>(MESSAGE).toClass(Message)
+    bind<IMessage>(MESSAGE).toClass(Message),
+    bind<IApi>(API).toClass(Api)
   ],
-  strict: false
+  strict: true
 })
 export class AppContainer { }

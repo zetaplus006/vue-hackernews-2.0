@@ -9,7 +9,7 @@ const serverConfig = require('./webpack.server.config')
 const readFile = (fs, file) => {
   try {
     return fs.readFileSync(path.join(clientConfig.output.path, file), 'utf-8')
-  } catch (e) {}
+  } catch (e) { }
 }
 
 module.exports = function setupDevServer (app, templatePath, cb) {
@@ -49,7 +49,8 @@ module.exports = function setupDevServer (app, templatePath, cb) {
   const clientCompiler = webpack(clientConfig)
   const devMiddleware = require('webpack-dev-middleware')(clientCompiler, {
     publicPath: clientConfig.output.publicPath,
-    noInfo: true
+    noInfo: true,
+    color: true
   })
   app.use(devMiddleware)
   clientCompiler.plugin('done', stats => {

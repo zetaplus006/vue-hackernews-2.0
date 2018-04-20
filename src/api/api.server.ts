@@ -1,13 +1,18 @@
 
 import { IHttpApi } from './api.interface';
 
-
 export default class Api implements IHttpApi {
-    getData() {
-        return new Promise(r => {
-            setTimeout(() => {
-                r('server ----------')
-            }, 20);
-        })
+    async getData() {
+        return [
+            {
+                text: 'from server'
+            },
+            {
+                text: 'from server'
+            },
+            {
+                text: 'from server'
+            }
+        ];
     }
 }

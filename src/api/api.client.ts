@@ -1,9 +1,18 @@
-import { IHttpApi } from './api.interface';
 
+import { IHttpApi } from './api.interface';
 
 export default class Api implements IHttpApi {
     async getData() {
-        console.log('from client')
-        return 'from client'
+        return [
+            {
+                text: 'from client'
+            },
+            {
+                text: 'from client'
+            },
+            {
+                text: 'from client'
+            }
+        ];
     }
 }

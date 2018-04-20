@@ -1,13 +1,13 @@
 
-import { State, Inject } from 'vue-class-state'
-import { IUserInfo } from './UserInfo';
+import { Inject } from 'vue-class-state';
 import { IMessage } from './Message';
+import { IUserInfo } from './UserInfo';
 
 export const STORE = 'store';
 
-export const IStore = Inject(STORE)
+export const IStore = Inject(STORE);
 
-export type IStore = Store
+export type IStore = Store;
 
 export class Store {
     /**

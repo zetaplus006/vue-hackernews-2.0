@@ -11,7 +11,7 @@ const config = merge(base, {
   },
   resolve: {
     alias: {
-      'httpApi': './api.clinet.ts'
+      'httpApi': path.resolve(__dirname, '../src/api/api.client.ts')
     }
   },
   plugins: [
@@ -42,7 +42,7 @@ const config = merge(base, {
   ]
 })
 
-if (process.env.NODE_ENV === 'production') {
+/* if (process.env.NODE_ENV === 'production') {
   config.plugins.push(
     // auto generate service worker
     new SWPrecachePlugin({
@@ -71,6 +71,6 @@ if (process.env.NODE_ENV === 'production') {
       ]
     })
   )
-}
+} */
 
 module.exports = config

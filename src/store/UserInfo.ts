@@ -1,12 +1,12 @@
 
-import { State, Inject } from 'vue-class-state'
+import { Inject, State } from 'vue-class-state';
 export const USERINFO = 'userinfo';
 
-export const IUserInfo = Inject(USERINFO)
+export const IUserInfo = Inject(USERINFO);
 
-export type IUserInfo = UserInfo
+export type IUserInfo = UserInfo;
 
 export class UserInfo {
-    @State name = 'seabook'
+    @State name = 'seabook';
 
 }

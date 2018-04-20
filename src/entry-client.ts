@@ -1,37 +1,38 @@
-import Vue from 'vue'
-import 'es6-promise/auto'
-import { createApp } from './main'
+import 'core-js/es6/promise';
+import 'core-js/library/es6/array';
+import Vue from 'vue';
 import { State } from 'vue-class-state';
+import { createApp } from './main';
+
+const { app, router, store } = createApp();
 
 // a global mixin that calls `asyncData` when a route component's params change
 Vue.mixin({
-  beforeRouteUpdate(to, from, next) {
-    const { asyncData } = this.$options
+  beforeRouteUpdate(to, _from, next) {
+    const { asyncData } = (this as any).$options;
     if (asyncData) {
       asyncData(
-        this.$store,
+        store,
         to
-      ).then(next).catch(next)
+      ).then(next).catch(next);
     } else {
-      next()
+      next();
     }
   }
-})
+});
 
-const { app, router, store } = createApp()
-
-function replaceAllState(clientStore, serverStore) {
+function replaceAllState(clientStore: any, serverStore: any) {
   Object.keys(clientStore).forEach(key => {
-    State.replaceState(clientStore[key], serverStore[key] || {})
-  })
+    State.replaceState(clientStore[key], serverStore[key] || {});
+  });
 }
 
-const key = '__INITIAL_STATE__'
+const statekey = '__INITIAL_STATE__';
 
 // prime the store with server-initialized state.
 // the state is determined during SSR and inlined in the page markup.
-if (window[key]) {
-  replaceAllState(store, window[key])
+if (window[statekey]) {
+  replaceAllState(store, window[statekey]);
 }
 
 // wait until router has resolved all async before hooks
@@ -42,32 +43,30 @@ router.onReady(() => {
   // the data that we already have. Using router.beforeResolve() so that all
   // async components are resolved.
   router.beforeResolve((to, from, next) => {
-    const matched = router.getMatchedComponents(to)
-    const prevMatched = router.getMatchedComponents(from)
-    let diffed = false
+    const matched = router.getMatchedComponents(to);
+    const prevMatched = router.getMatchedComponents(from);
+    let diffed = false;
     const activated = matched.filter((c, i) => {
-      return diffed || (diffed = (prevMatched[i] !== c))
-    })
+      return diffed || (diffed = (prevMatched[i] !== c));
+    });
     // TODO asyncData type
-    const asyncDataHooks = activated.map(c => (c as any).asyncData).filter(_ => _)
+    const asyncDataHooks = activated.map(c => (c as any).asyncData).filter(_ => _);
     if (!asyncDataHooks.length) {
-      return next()
+      return next();
     }
 
     Promise.all(asyncDataHooks.map(hook => hook({ store, route: to })))
       .then(() => {
-        next()
+        next();
       })
-      .catch(next)
-  })
+      .catch(next);
+  });
 
   // actually mount to DOM
-  app.$mount('#app')
-})
+  app.$mount('#app');
+});
 
 // service worker
 // if ('https:' === location.protocol && navigator.serviceWorker) {
 //   navigator.serviceWorker.register('/service-worker.js')
 // }
-
-

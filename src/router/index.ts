@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import Router from 'vue-router';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export function createRouter() {
   return new Router({
@@ -12,5 +12,5 @@ export function createRouter() {
       { path: '/home', component: () => import('../views/Home') },
       { path: '/', redirect: '/home' }
     ]
-  })
+  });
 }

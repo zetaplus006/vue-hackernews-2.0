@@ -3,41 +3,37 @@
         "target": "es6",
         "lib": [
             "dom",
-            "es2015",
+            "es2015"
         ],
         "module": "esnext",
         "moduleResolution": "node",
         "experimentalDecorators": true,
-        "strict": false,
-        "strictFunctionTypes": false,
-        "noUnusedLocals": false,
+        "strict": true,
+        "strictFunctionTypes": true,
+        "noUnusedLocals": true,
         "noUnusedParameters": false,
         "suppressImplicitAnyIndexErrors": true,
         "allowSyntheticDefaultImports": true,
         "jsx": "preserve",
-        "traceResolution": false,
         "baseUrl": ".",
         "paths": {
             "httpApi": [
-                "src/api/api.client"
+                "src/api/api.client",
+                "src/api/api.server"
             ],
+            "@/*": [
+                "src/*"
+            ]
         },
-        // "typeRoots": [
-        //     "node_modules/@types"
-        // ],
-        // "types": [
-        //     "./src/api/index.d.ts",
-        //     "vue",
-        //     "vue-router",
-        //     "vuex",
-        //     "node"
-        // ]
+        "plugins": [
+            {
+                "name": "tslint-language-service",
+                "configFile": "./tslint.json"
+            }
+        ]
     },
-    // "include": [
-    //     "src/**/*.ts",
-    //     "src/**/*.tsx",
-    //     "typings/*.ts",
-    //     // "test/**/*.ts"
-    // ],
+    "exclude": [
+        "./node_modules"
+    ],
     "compileOnSave": false
 }

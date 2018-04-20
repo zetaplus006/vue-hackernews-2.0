@@ -15,7 +15,7 @@ module.exports = merge(base, {
   },
   resolve: {
     alias: {
-      'httpApi': './api.server.ts'
+      'httpApi': path.resolve(__dirname, '../src/api/api.server.ts')
     }
   },
   // https://webpack.js.org/configuration/externals/#externals
