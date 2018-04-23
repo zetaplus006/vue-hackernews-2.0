@@ -4,6 +4,7 @@ import { IMessage } from '@/store/Message';
 import { IStore } from '@/store/Store';
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
+import { Prue } from '../../components/Prue/index';
 import * as styles from './style.less';
 
 @Component
@@ -29,7 +30,7 @@ export default class Home extends Vue {
     return (
       <div class={styles.home} >
         <input type='text' v-model={this.word} onInput={this.onInput} />
-        <p>{this.word}</p>
+        <Prue text={this.word}></Prue>
         {!this.isShowSearch && <button onClick={() => this.message.loadMore()}>loadmore</button>}
         {
           this.showList.map(item => <OneLine text={item.text}></OneLine>)
@@ -41,5 +42,7 @@ export default class Home extends Vue {
   static asyncData(store: IStore) {
     return store.message.initData();
   }
+
+  static serverCacheKey = (props: any) => props.text;
 
 }

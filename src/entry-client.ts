@@ -5,7 +5,7 @@ import { State } from 'vue-class-state';
 import { createApp } from './main';
 
 const { app, router, store } = createApp();
-
+store.route.setRouter(router);
 // a global mixin that calls `asyncData` when a route component's params change
 Vue.mixin({
   beforeRouteUpdate(to, _from, next) {
