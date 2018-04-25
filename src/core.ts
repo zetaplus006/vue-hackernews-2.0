@@ -5,14 +5,14 @@ export { Component as VueType, ofType } from 'vue-tsx-support';
 
 export const Input = Prop();
 
-export interface IPrueCtx<PropType> {
+export interface IPureCtx<PropType> {
     props: PropType;
     children: any;
     slots: () => any;
     listeners: any;
 }
 
-export function prueComponent<TProps, TEvents = {}, TScopedSlots = {}>(c: any) {
+export function pureComponent<TProps, TEvents = {}, TScopedSlots = {}>(c: any) {
     return ofType<TProps, TEvents, TScopedSlots>().convert(c);
 }
 

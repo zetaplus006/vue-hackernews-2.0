@@ -19,6 +19,8 @@ export function createApp() {
   // this registers `store.state.route`
   // sync(store, router)
 
+  store.route.syncRouter(router);
+
   // create the app instance.
   // here we inject the router, store and ssr context to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.

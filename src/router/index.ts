@@ -10,6 +10,7 @@ export function createRouter() {
     // scrollBehavior: () => ({ y: 0 }),
     routes: [
       { path: '/home', component: () => import('../views/Home') },
+      { path: '/user', component: () => import('../views/UserView') },
       { path: '/', redirect: '/home' }
     ]
   });

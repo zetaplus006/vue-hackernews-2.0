@@ -5,14 +5,15 @@ export const ROUTE = 'route';
 export const IRoute = Inject(ROUTE);
 export type IRoute = Route;
 export class Route {
+
     @State state = {};
 
     router!: Router;
 
-    setRouter(router: Router) {
+    syncRouter(router: Router) {
         this.router = router;
-        this.router.beforeResolve((to: any, from: any, next: () => any) => {
-            Mutation.commit(this, () => this.state = cloneRoute(to, from), 'sync_route');
+        this.router.afterEach((to: any, from: any) => {
+            Mutation.commit(this, () => this.state = cloneRoute(to, from), 'routeChange');
         });
     }
 
@@ -36,6 +37,6 @@ export function cloneRoute(to: any, from?: any) {
     if (from) {
         (clone as any).from = cloneRoute(from);
     }
-    // return Object.freeze(clone);
-    return clone;
+    return Object.freeze(clone);
+    // return clone;
 }
