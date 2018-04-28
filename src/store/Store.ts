@@ -11,7 +11,9 @@ export const IStore = Inject(STORE);
 export type IStore = Store;
 
 export class Store {
-
+    /**
+     * 属性注入是不可遍历的，所以服务端渲染时该数据不会返回到前端
+     */
     @IRoute route!: IRoute;
 
     /**

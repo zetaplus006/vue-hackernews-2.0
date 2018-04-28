@@ -35,8 +35,7 @@ export default class Home extends Vue {
   render() {
     return (
       <div class={styles.home} >
-        <button onClick={this.goToUser}>go to user</button>
-        {/* <router-link to='/user'>go to user</router-link> */}
+        <button onClick={this.goToUser} >go to user</button>
         <input type='text' v-model={this.word} onInput={this.onInput} />
         <Prue text={this.word}></Prue>
         {!this.isShowSearch && <button onClick={() => this.message.loadMore()}>loadmore</button>}

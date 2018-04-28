@@ -1,4 +1,4 @@
 
 export interface IHttpApi {
-    getData(): Promise<any>;
+    getData(): Promise<Array<{ text: string }>>;
 }

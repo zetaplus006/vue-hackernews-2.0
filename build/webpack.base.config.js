@@ -40,14 +40,14 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/
       },
-      {
-        test: /\.ts$/,
-        enforce: 'pre',
-        loader: 'tslint-loader',
-        options: {
-          failOnHint: true
-        }
-      },
+      // {
+      //   test: /\.ts$/,
+      //   enforce: 'pre',
+      //   loader: 'tslint-loader',
+      //   options: {
+      //     failOnHint: true
+      //   }
+      // },
       // webpack 4.x 与 ts-loader4.x 有问题，ts-loder回退3.5
       {
         test: /\.tsx?$/,
@@ -84,6 +84,20 @@ module.exports = {
           : ['vue-style-loader', 'css-loader', 'stylus-loader']
       },
       {
+        test: /\.css?$/,
+        use: isProd
+          ? ExtractTextPlugin.extract({
+            use: [
+              {
+                loader: 'css-loader',
+                options: { minimize: true }
+              }
+            ],
+            fallback: 'vue-style-loader'
+          })
+          : ['vue-style-loader', 'css-loader']
+      },
+      {
         test: /\.less$/,
         use: isProd
           ? ExtractTextPlugin.extract({
@@ -95,7 +109,7 @@ module.exports = {
                   namedExport: true,
                   camelCase: true,
                   minimize: true,
-                  localIdentName: "[local]_[hash:base64:5]"
+                  localIdentName: "[name]_[local]_[hash:base64:5]"
                 }
               },
               'less-loader'
@@ -111,7 +125,7 @@ module.exports = {
                 namedExport: true,
                 camelCase: true,
                 minimize: false,
-                localIdentName: "[local]_[hash:base64:5]"
+                localIdentName: "[name]_[local]_[hash:base64:5]"
               }
             },
             'less-loader'

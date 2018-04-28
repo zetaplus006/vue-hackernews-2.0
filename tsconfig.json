@@ -9,7 +9,8 @@
         "moduleResolution": "node",
         "experimentalDecorators": true,
         "strict": true,
-        "strictFunctionTypes": true,
+        "strictPropertyInitialization": false,
+        "strictFunctionTypes": false,
         "noUnusedLocals": true,
         "noUnusedParameters": false,
         "suppressImplicitAnyIndexErrors": true,
@@ -32,6 +33,12 @@
             }
         ]
     },
+    "include": [
+        "src/**/*.tsx",
+        "src/**/*.ts",
+        "src/**/*.vue",
+        "typings/*.d.ts"
+    ],
     "exclude": [
         "./node_modules"
     ],

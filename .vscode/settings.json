@@ -1,0 +1,5 @@
+{
+    "tslint.typeCheck": true,
+    "tslint.autoFixOnSave": true,
+    "vetur.format.defaultFormatter.ts": "vscode-typescript"
+}

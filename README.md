@@ -11,6 +11,7 @@ Vue+TypeScript+服务端渲染，改自[vue-hackernews-2.0](https://github.com/v
 - 服务端渲染
 - [typings-for-css-modules-loader](https://github.com/Jimdo/typings-for-css-modules-loader)强类型的css-modules
 
+- css直出有问题（使用vue单文件没此问题），待解决
 
 ## Build Setup
 
